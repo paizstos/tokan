@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patricia Conseil | Comptabilité & Immobilier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0b1f3a;
+      --primary-soft: #122d52;
+      --gold: #c9a24d;
+      --gold-light: #f3dfaa;
+      --bg: #f7f8fb;
+      --white: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.04em;
+      font-size: 1.2rem;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(11, 31, 58, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 16px 34px rgba(11, 31, 58, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-soft);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: white;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--primary);
+      margin: 5px auto;
+      border-radius: 4px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(201, 162, 77, 0.22), transparent 34%),
+        linear-gradient(135deg, #f8fafc 0%, #eef4ff 48%, #fff7df 100%);
+      padding: 86px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(201, 162, 77, 0.26);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.35rem, 5vw, 4.65rem);
+      line-height: 1.02;
+      letter-spacing: -0.07em;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.45rem;
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .hero-card {
+      position: relative;
+      background: var(--white);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .dashboard-card {
+      background: linear-gradient(180deg, var(--primary), #071529);
+      border-radius: 26px;
+      padding: 28px;
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dashboard-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(201, 162, 77, 0.22);
+      right: -80px;
+      top: -80px;
+    }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 38px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .balance {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 28px;
+    }
+
+    .balance span {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.92rem;
+    }
+
+    .balance strong {
+      display: block;
+      font-size: clamp(2.1rem, 5vw, 3.3rem);
+      letter-spacing: -0.06em;
+      line-height: 1.1;
+    }
+
+    .progress-list {
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-item {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 44px;
+    }
+
+    .section-head.center {
+      margin: 0 auto 44px;
+      text-align: center;
+    }
+
+    .section-head small {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 0.78rem;
+    }
+
+    .section-head h2 {
+      margin-top: 10px;
+      color: var(--primary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.055em;
+      line-height: 1.1;
+    }
+
+    .section-head p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: rgba(201, 162, 77, 0.48);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #fff7df;
+      color: var(--gold);
+      font-size: 1.45rem;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      color: var(--primary);
+      font-size: 1.18rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card ul {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      color: var(--text);
+      font-size: 0.93rem;
+    }
+
+    .service-card li::before {
+      content: "✓";
+      color: var(--gold);
+      font-weight: 800;
+      margin-right: 9px;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 470px;
+      border-radius: 32px;
+      background:
+        linear-gradient(rgba(11, 31, 58, 0.2), rgba(11, 31, 58, 0.6)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80") center/cover;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .floating-note strong {
+      color: var(--primary);
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .floating-note span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: #fbfdff;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      color: var(--primary);
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .cta {
+      padding: 0 0 86px;
+    }
+
+    .cta-box {
+      border-radius: 34px;
+      padding: 52px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(201, 162, 77, 0.28), transparent 30%),
+        linear-gradient(135deg, var(--primary), #071529);
+      color: white;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,0.72);
+      max-width: 680px;
+    }
+
+    .cta-panel {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .cta-panel strong {
+      font-size: 1.35rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .cta-panel span {
+      color: rgba(255,255,255,0.7);
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .footer {
+      background: #071529;
+      color: white;
+      padding: 72px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.7fr 0.7fr 1.25fr;
+      gap: 34px;
+      margin-bottom: 46px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      margin-bottom: 16px;
+    }
+
+    .footer p,
+    .footer a,
+    .footer li {
+      color: rgba(255,255,255,0.68);
+      font-size: 0.94rem;
+    }
+
+    .footer ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      background: rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border-radius: 16px;
+      padding: 14px 15px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.46);
+    }
+
+    .contact-form textarea {
+      min-height: 104px;
+      resize: vertical;
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.52);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .cta-box,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-card {
+        max-width: 650px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: none;
+        padding: 0 0 18px;
+      }
+
+      .mobile-menu.active {
+        display: grid;
+        gap: 10px;
+      }
+
+      .mobile-menu a {
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: white;
+        border: 1px solid var(--border);
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .hero {
+        padding: 58px 0 56px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .services-grid,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 360px;
+      }
+
+      .cta {
+        padding-bottom: 64px;
+      }
+
+      .cta-box {
+        padding: 34px 24px;
+        border-radius: 28px;
+      }
+
+      .footer {
+        padding-top: 56px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .btn {
+        width: 100%;
+      }
+
+      .hero-card,
+      .dashboard-card,
+      .service-card {
+        padding: 22px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark">FC</span>
+        <span>Patricia Conseil</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#services">Services</a>
+        <a href="#about">Méthode</a>
+        <a href="#contact">Contact</a>
+        <a href="#footer">Liens</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="tel:+32000000000" class="btn btn-secondary">Nous appeler</a>
+        <a href="#contact" class="btn btn-primary">Demander un rendez-vous</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#about">Méthode</a>
+      <a href="#contact">Contact</a>
+      <a href="#footer">Liens utiles</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Cabinet conseil pour particuliers & entreprises</div>
+          <h1>Comptabilité, fiscalité & achat immobilier <span>sans stress.</span></h1>
+          <p>
+            Patricia Conseil accompagne les entrepreneurs, indépendants et familles dans leurs décisions financières importantes : gestion comptable, optimisation fiscale, investissement immobilier et démarches administratives.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Obtenir une consultation</a>
+            <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>360°</strong>
+              <span>Accompagnement global</span>
+            </div>
+            <div class="stat">
+              <strong>24h</strong>
+              <span>Réponse rapide</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Conseil personnalisé</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Aperçu des services">
+          <div class="dashboard-card">
+            <div class="dashboard-top">
+              <span class="badge">Tableau de bord client</span>
+              <span>2026</span>
+            </div>
+            <div class="balance">
+              <span>Budget optimisé estimé</span>
+              <strong>+18 450 €</strong>
+            </div>
+            <div class="progress-list">
+              <div class="progress-item">
+                <div class="progress-head">
+                  <span>Comptabilité annuelle</span><strong>92%</strong>
+                </div>
+                <div class="bar"><span style="width:92%"></span></div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-head">
+                  <span>Projet immobilier</span><strong>74%</strong>
+                </div>
+                <div class="bar"><span style="width:74%"></span></div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-head">
+                  <span>Optimisation fiscale</span><strong>81%</strong>
+                </div>
+                <div class="bar"><span style="width:81%"></span></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head center">
+          <small>Nos expertises</small>
+          <h2>Des services pensés pour sécuriser vos décisions financières.</h2>
+          <p>Un interlocuteur unique pour clarifier vos chiffres, préparer vos démarches et avancer avec une vision claire.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="icon">📊</div>
+            <h3>Comptabilité & déclarations</h3>
+            <p>Suivi comptable, bilans, déclarations fiscales et accompagnement administratif pour indépendants, sociétés et particuliers.</p>
+            <ul>
+              <li>Tenue comptable</li>
+              <li>TVA & impôts</li>
+              <li>Reporting financier</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🏠</div>
+            <h3>Achat immobilier</h3>
+            <p>Analyse de votre capacité d’achat, simulation des frais, lecture des documents et préparation de votre stratégie d’acquisition.</p>
+            <ul>
+              <li>Budget & financement</li>
+              <li>Analyse de rentabilité</li>
+              <li>Accompagnement achat</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">💼</div>
+            <h3>Création d’entreprise</h3>
+            <p>Choix de structure, prévisions financières, plan de lancement et conseils pour démarrer sur des bases solides.</p>
+            <ul>
+              <li>Business plan</li>
+              <li>Statut juridique</li>
+              <li>Organisation financière</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div class="floating-note">
+            <strong>Une approche claire et humaine</strong>
+            <span>Nous traduisons les chiffres en décisions simples, compréhensibles et concrètes.</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head">
+            <small>Notre méthode</small>
+            <h2>Un accompagnement structuré, confidentiel et orienté résultat.</h2>
+            <p>
+              Chaque dossier commence par une analyse complète de votre situation. Nous identifions les risques, les opportunités et les actions prioritaires pour vous faire gagner du temps et de la sérénité.
+            </p>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div>
+                <h3>Diagnostic personnalisé</h3>
+                <p>Nous analysons vos objectifs, vos documents et vos contraintes pour comprendre votre situation réelle.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div>
+                <h3>Plan d’action clair</h3>
+                <p>Vous recevez une stratégie simple avec les étapes, les priorités et les documents nécessaires.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div>
+                <h3>Suivi et optimisation</h3>
+                <p>Nous restons à vos côtés pour ajuster, optimiser et sécuriser chaque décision importante.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Besoin d’un avis professionnel avant de décider ?</h2>
+            <p>Prenez rendez-vous pour une première analyse de votre situation comptable, fiscale ou immobilière. Réponse rapide et accompagnement confidentiel.</p>
+          </div>
+          <div class="cta-panel">
+            <strong>Consultation sur mesure</strong>
+            <span>Expliquez-nous votre besoin et nous vous recontactons rapidement.</span>
+            <a href="#footer" class="btn btn-primary" style="background: white; color: var(--primary); width: 100%;">Contacter le cabinet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Patricia Conseil</h3>
+        <p>Cabinet d’accompagnement en comptabilité, fiscalité, achat immobilier et stratégie financière pour particuliers, indépendants et entreprises.</p>
+        <div class="socials" aria-label="Nous suivre">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X">x</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#services">Nos services</a></li>
+          <li><a href="#about">Notre méthode</a></li>
+          <li><a href="#contact">Rendez-vous</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Liens utiles</h4>
+        <ul>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Conditions générales</a></li>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Gestion des cookies</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Formulaire de contact</h4>
+        <form class="contact-form">
+          <input type="text" name="name" placeholder="Votre nom" required>
+          <input type="email" name="email" placeholder="Votre email" required>
+          <textarea name="message" placeholder="Votre message" required></textarea>
+          <button class="btn btn-primary" type="submit">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2026 Patricia Conseil. Tous droits réservés.</span>
+      <span>Comptabilité · Fiscalité · Immobilier · Conseil financier</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    });
+
+    document.querySelector('.contact-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('Merci ! Votre message a bien été préparé. Connectez ce formulaire à votre backend pour recevoir les demandes.');
+    });
+  </script>
+</body>
+</html>
